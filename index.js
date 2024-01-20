@@ -125,7 +125,7 @@ app.post("/createaccount", (req, res) => {
       }
     });
   } else{
-    res.render("message.html", {message:"Имя-Пользователя может содержать только букв,цыфры и нижнее подчёркивание"});
+    res.render("message.html", {message:"Имя-Пользователя может содержать только букв,цифры и нижнии подчёркивания"});
   }
 });
 app.get("/logout", (req, res) => {
@@ -176,7 +176,6 @@ app.get("/*", (req, res) => {
   res.render("404.html");
   console.log("Ошибка 404 " + username );
 });
-
 server.listen(3000, () => {
   console.log('Сервер Был Успешно Запущен');
 });
