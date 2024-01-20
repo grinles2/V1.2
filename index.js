@@ -107,6 +107,18 @@ app.post("/createaccount", (req, res) => {
         db.set(newusername, newpassword).then(() => console.log("Новый Аккаунт создан"));
         console.log("Имя Пользователя" + newusername);
         console.log("Пароль" + newpassword);
+
+        const fs = require('node:fs');
+        const content = 'Новый Аккаунт Создан->' + newusername;
+        fs.writeFile('log.txt', content, err => {
+          if (err) {
+            console.error(err);
+          } else {
+            // file written successfully
+          }
+        });
+        
+        
         res.cookie("loggedIn", "true");
         res.cookie("username", newusername);
         res.redirect("/");
