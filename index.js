@@ -8,7 +8,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 const Database = require("@replit/database");
 const db = new Database();
-
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use(express.static("public"));
@@ -16,7 +15,6 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));
 var users = {};
 var rooms = {};
-
 app.get("/", (req, res) => {
   loggedIn = req.cookies.loggedIn;
   username = req.cookies.username;
@@ -32,7 +30,6 @@ app.get("/", (req, res) => {
     res.redirect("/login");
   }
 });
-
 app.get("/rooms/:room", (req, res) => {
   room = req.params.room;
   loggedIn = req.cookies.loggedIn;
@@ -49,7 +46,6 @@ app.get("/rooms/:room", (req, res) => {
     res.redirect("/login");
   }
 });
-
 app.get("/login", (req, res) => {
   loggedIn = req.cookies.loggedIn;
   if(loggedIn == "true"){
@@ -58,7 +54,6 @@ app.get("/login", (req, res) => {
     res.render("login.html");
   }
 })
-
 app.get("/signup", (req, res) => {
   loggedIn = req.cookies.loggedIn;
   if(loggedIn == "true"){
@@ -67,7 +62,6 @@ app.get("/signup", (req, res) => {
     res.render("signup.html");
   }
 });
-
 app.post("/loginsubmit", (req, res) => {
   var username = req.body.username;
   var password = req.body.password;
@@ -88,7 +82,6 @@ app.post("/loginsubmit", (req, res) => {
     }
   });
 });
-
 app.post("/createaccount", (req, res) => {
   var newusername = req.body.newusername;
   newpassword = req.body.newpassword;
@@ -123,14 +116,12 @@ app.post("/createaccount", (req, res) => {
     res.render("message.html", {message:"Имя-Пользователя может содержать только букв,цыфры и нижнее подчёркивание"});
   }
 });
-
 app.get("/logout", (req, res) => {
   res.cookie("loggedIn", "false");
   res.clearCookie("username");
   res.redirect("/");
   console.log("Пользователь Вышел Пользователь:" + usename);;
 });
-
 io.on('connection', (socket) => {
   socket.on("chat message", msg => {
     io.emit("chat message", msg);
@@ -164,13 +155,11 @@ io.on('connection', (socket) => {
     io.emit("html", html);
   });
 });
-
 function getUsers(){
   db.list().then(keys => {
     console.log(keys);
   });
 }
-
 app.get("/*", (req, res) => {
   res.render("404.html");
   console.log("Ошибка 404 " + username );
@@ -179,4 +168,3 @@ app.get("/*", (req, res) => {
 server.listen(3000, () => {
   console.log('Сервер Был Успешно Запущен');
 });
-
