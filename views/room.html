@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Сloud</title>
+  <link href="/style.css" rel="stylesheet">
+  <link href="/image.svg" rel="icon">
+</head>
+<body>
+  <!-- Existing code -->
+  <div id="menu">
+    <!-- Existing code -->
+    <input type="file" id="fileInput">
+    <button id="uploadBtn" class="btn" onclick="uploadFile()">Upload File</button>
+  </div>
+  <script>
+    function uploadFile() {
+      var fileInput = document.getElementById('fileInput');
+      var file = fileInput.files[0];
+      if (file) {
+        var formData = new FormData();
+        formData.append('file', file);
+        fetch('/upload', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          // Handle the response here
+        })
+        .catch(error => {
+          // Handle errors here
+        });
+      } else {
+        alert('Please select a file to upload');
+      }
+    }
+  </script>
+</body>
+</html>

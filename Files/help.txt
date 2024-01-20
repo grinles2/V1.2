@@ -1,0 +1,4 @@
+curl $REPLIT_DB_URL/ADMIN - get password of account ADMIN
+curl -X GET "$REPLIT_DB_URL?prefix="   - get all keys of Database
+curl -XDELETE $REPLIT_DB_URL/ADMIN      - delete the key ADMIN
+curl $REPLIT_DB_URL -d 'ADMIN = 1234567890'
