@@ -114,7 +114,6 @@ app.post("/createaccount", (req, res) => {
           if (err) {
             console.error(err);
           } else {
-            // file written successfully
           }
         });
         
