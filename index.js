@@ -75,8 +75,8 @@ app.post("/loginsubmit", (req, res) => {
 
           
           const fs = require('node:fs');
-          const content = 'Пользователь Зашёл->' + username;
-          fs.writeFile('log.txt', content, err => {
+          const content = 'Пользователь Зашёл->' + username + ';';
+          fs.appendFile('log.txt', content, err => {
             if (err) {
               console.error(err);
             } else {
@@ -119,8 +119,8 @@ app.post("/createaccount", (req, res) => {
         console.log("Пароль" + newpassword);
 
         const fs = require('node:fs');
-        const content = 'Новый Аккаунт Создан->' + newusername;
-        fs.writeFile('log.txt', content, err => {
+        const content = 'Новый Аккаунт Создан->' + newusername + ';';
+        fs.appendFile('log.txt', content, err => {
           if (err) {
             console.error(err);
           } else {
@@ -146,13 +146,15 @@ app.get("/logout", (req, res) => {
   
   const fs = require('node:fs');
   const content = 'Пользователь вышел->' + username;
-  fs.writeFile('log.txt', content, err => {
+  fs.appendFile('log.txt', content, err => {
     if (err) {
       console.error(err);
     } else {
     }
   });
 });
+
+
 io.on('connection', (socket) => {
   socket.on("chat message", msg => {
     io.emit("chat message", msg);
@@ -199,8 +201,8 @@ server.listen(3000, () => {
   console.log('Сервер Был Успешно Запущен');
   
   const fs = require('node:fs');
-  const content = 'Сервер Успешно Запущен';
-  fs.writeFile('log.txt', content, err => {
+  const content = 'Сервер Успешно Запущен'+ ';';
+  fs.appendFile('log.txt', content, err => {
     if (err) {
       console.error(err);
     } else {
