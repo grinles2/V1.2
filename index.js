@@ -72,6 +72,16 @@ app.post("/loginsubmit", (req, res) => {
           res.cookie("loggedIn", "true");
           res.cookie("username", username);
           console.log("Пользователь Успешно Зашёл Пользователь: " + username);;
+
+          
+          const fs = require('node:fs');
+          const content = 'Пользователь Зашёл->' + username;
+          fs.writeFile('log.txt', content, err => {
+            if (err) {
+              console.error(err);
+            } else {
+            }
+          });
           res.redirect("/");
         } else{
           res.render("message.html", {message:"Неправильный Пароль."});
@@ -132,6 +142,16 @@ app.get("/logout", (req, res) => {
   res.clearCookie("username");
   res.redirect("/");
   console.log("Пользователь Вышел Пользователь:" + usename);;
+
+  
+  const fs = require('node:fs');
+  const content = 'Пользователь вышел->' + username;
+  fs.writeFile('log.txt', content, err => {
+    if (err) {
+      console.error(err);
+    } else {
+    }
+  });
 });
 io.on('connection', (socket) => {
   socket.on("chat message", msg => {
@@ -177,4 +197,13 @@ app.get("/*", (req, res) => {
 });
 server.listen(3000, () => {
   console.log('Сервер Был Успешно Запущен');
+  
+  const fs = require('node:fs');
+  const content = 'Сервер Успешно Запущен';
+  fs.writeFile('log.txt', content, err => {
+    if (err) {
+      console.error(err);
+    } else {
+    }
+  });
 });
