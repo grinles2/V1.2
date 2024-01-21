@@ -36,3 +36,11 @@ p a, p a:visited {
 p a:hover, p a:active {
   text-decoration:underline;
 }
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
