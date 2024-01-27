@@ -119,7 +119,7 @@ app.post("/createaccount", (req, res) => {
         console.log("Пароль" + newpassword);
 
         const fs = require('node:fs');
-        const content = 'Новый Аккаунт Создан->' + newusername + ';';
+        const content = 'Новый Аккаунт Создан-->  ' + newusername + ';';
         fs.appendFile('log.txt', content, err => {
           if (err) {
             console.error(err);
@@ -141,19 +141,7 @@ app.get("/logout", (req, res) => {
   res.cookie("loggedIn", "false");
   res.clearCookie("username");
   res.redirect("/");
-  console.log("Пользователь Вышел Пользователь:" + usename);;
-
-  
-  const fs = require('node:fs');
-  const content = 'Пользователь вышел->' + username;
-  fs.appendFile('log.txt', content, err => {
-    if (err) {
-      console.error(err);
-    } else {
-    }
-  });
-});
-
+  });;
 
 io.on('connection', (socket) => {
   socket.on("chat message", msg => {
@@ -195,7 +183,6 @@ function getUsers(){
 }
 app.get("/*", (req, res) => {
   res.render("404.html");
-  console.log("Ошибка 404 " + username );
 });
 server.listen(3000, () => {
   console.log('Сервер Был Успешно Запущен');
