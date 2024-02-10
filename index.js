@@ -119,8 +119,8 @@ app.post("/createaccount", (req, res) => {
         console.log("Пароль" + newpassword);
 
         const fs = require('node:fs');
-        const content = 'Новый Аккаунт Создан-->  ' + newusername + ';';
-        fs.appendFile('log.txt', content, err => {
+        const content = 'Новый Аккаунт Создан-->  ' + newusername + '\n';
+        fs.appendFile('log.txt' , content, err => {
           if (err) {
             console.error(err);
           } else {

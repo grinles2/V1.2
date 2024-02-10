@@ -1,0 +1,16 @@
+Device name	LenovoTablet-27
+Processor	AMD 3015e with Radeon Graphics                    1.20 GHz
+Installed RAM	4.00 GB (3.36 GB usable)
+Device ID	1C187DED-950C-4C78-8E24-D3E243C223A2
+Product ID	00328-70070-32253-AA948
+System type	64-bit operating system, x64-based processor
+Pen and touch	No pen or touch input is available for this display
+
+
+Device name	Kyrylo
+Processor	11th Gen Intel(R) Core(TM) i5-1145G7 @ 2.60GHz   2.61 GHz
+Installed RAM	16.0 GB (15.7 GB usable)
+Device ID	85650833-28C4-44C4-9428-A4EABE8BE4CA
+Product ID	00355-62840-49463-AAOEM
+System type	64-bit operating system, x64-based processor
+Pen and touch	Pen and touch support with 10 touch points
